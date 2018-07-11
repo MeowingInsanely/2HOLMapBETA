@@ -1,0 +1,43 @@
+/*CSS goes here!*/
+
+html,
+body {
+  height: 100%; /*as large as pawsible*/
+  padding: 0px;
+  margin: 0px;
+}
+
+/*our #pond*/
+body {
+  display: flex;
+  /*aligns items horizontally */
+  justify-content: space-between;
+
+  background-image: url("https://www.rd.com/wp-content/uploads/2016/04/01-cat-wants-to-tell-you-laptop.jpg"); /*lily pads*/
+  background-size: 100%;
+}
+
+.leftDiv {
+  /*Froggy!*/
+  background-color: aliceblue;
+  flex-grow: 1;
+}
+
+.middleDiv {
+  /*another frog*/
+  background-color: aqua;
+  background-image: url("https://www.rd.com/wp-content/uploads/2016/04/01-cat-wants-to-tell-you-laptop.jpg"); /*lily pads*/
+  background-size: 5%;
+  flex-grow: 3;
+}
+
+.rightDiv {
+  /*guess what? A frog!*/
+  background-color: aquamarine;
+  flex-grow: 1;
+}
+
+/*The place where we can draw stuff with JavaScript*/
+#canvas {
+  background-color: red;
+}
