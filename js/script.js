@@ -6,10 +6,10 @@
 var cat = document.createElement("canvas");
 cat = document.getElementById("cat-vas");
 
-// Magical bit to stop the canvas stretching
-cat.width = cat.clientHeight;
-cat.height = cat.clientHeight;
+// Magical bit of code to stop the canvas stretching
 cat.parentElement.style.width = "0px";
+cat.width = cat.clientWidth;
+cat.height = cat.clientHeight;
 
 // Cat that draws stuff:
 var catx = cat.getContext("2d");
