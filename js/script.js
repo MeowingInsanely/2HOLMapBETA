@@ -8,6 +8,7 @@ cat = document.getElementById("cat-vas");
 
 // Magical bit of code to stop the canvas stretching
 cat.parentElement.style.width = "0px";
+window.getComputedStyle(cat);
 cat.width = cat.clientWidth;
 cat.height = cat.clientHeight;
 
