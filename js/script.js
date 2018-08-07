@@ -3,14 +3,18 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial
 
 // Get our cat-vase?
-var cat = document.createElement("canvas");
+var cat = document.createElement("canvas"); //
 cat = document.getElementById("cat-vas");
 
-// Magical bit of code to stop the canvas stretching
-cat.parentElement.style.width = "0px";
-window.getComputedStyle(cat.parentElement);
-cat.width = cat.clientWidth;
-cat.height = cat.clientHeight;
+newtButt.addEventListener("click", pawsitionToColor);
+window.addEventListener("load", size);
+
+function size() {
+  cat.width = cat.clientWidth;
+  cat.height = cat.clientHeight;
+
+  pawsitionToColor();
+}
 
 // Cat that draws stuff:
 var catx = cat.getContext("2d");
@@ -31,63 +35,67 @@ catx.strokeStyle = "#000000";
 //catx.stroke();
 //catx.fill();
 
-//if
-//goto
+//if <---Not a loop! A loop is something that is repeating OwO
 //while
 //for
-
 var colorAtPosition = {};
 
-var x = -10;
-var y = -10;
-while (x < cat.width) {
-  x = x + 10;
-  while (y < cat.height) {
-    y = y + 10;
+function pawsitionToColor() {
+  var isOKAI = confirm("Do you want a new cat?");
+  if (isOKAI == true) {
+    var x = -10;
+    var y = -10;
+    while (x < cat.width) {
+      x = x + 10;
+      while (y < cat.height) {
+        y = y + 10;
 
-    var color = {
-      0: 0,
-      1: 1,
-      2: 2,
-      3: 3,
-      4: 4,
-      5: 5,
-      6: 6,
-      7: 7,
-      8: 8,
-      9: 9,
-      10: "A",
-      11: "B",
-      12: "C",
-      13: "D",
-      14: "E",
-      15: "F"
-    };
+        var color = {
+          0: 0,
+          1: 1,
+          2: 2,
+          3: 3,
+          4: 4,
+          5: 5,
+          6: 6,
+          7: 7,
+          8: 8,
+          9: 9,
+          10: "A",
+          11: "B",
+          12: "C",
+          13: "D",
+          14: "E",
+          15: "F"
+        };
 
-    //A number between 0 - 15
-    var redPart1 = Math.floor(Math.random() * 16);
-    var redPart2 = Math.floor(Math.random() * 16);
-    var greenPart1 = Math.floor(Math.random() * 16);
-    var greenPart2 = Math.floor(Math.random() * 16);
-    var bluePart1 = Math.floor(Math.random() * 16);
-    var bluePart2 = Math.floor(Math.random() * 16);
+        //A number between 0 - 15
+        var redPart1 = Math.floor(Math.random() * 16);
+        var redPart2 = Math.floor(Math.random() * 16);
+        var greenPart1 = Math.floor(Math.random() * 16);
+        var greenPart2 = Math.floor(Math.random() * 16);
+        var bluePart1 = Math.floor(Math.random() * 16);
+        var bluePart2 = Math.floor(Math.random() * 16);
 
-    colorAtPosition[x + "," + y] =
-      "#" +
-      color[redPart1] +
-      color[redPart2] +
-      color[greenPart1] +
-      color[greenPart2] +
-      color[bluePart1] +
-      color[bluePart2];
+        colorAtPosition[x + "," + y] =
+          "#" +
+          color[redPart1] +
+          color[redPart2] +
+          color[greenPart1] +
+          color[greenPart2] +
+          color[bluePart1] +
+          color[bluePart2];
+      }
+      y = -10;
+    }
   }
-  y = -10;
-}
+} //Funciton ends here (I cat spell)
 
 colorAtPosition["0,0"] = "#000000";
 
 var pawSitionX = 0;
 var pawSitionY = 0;
+
 function grid() {
   var x = -10;
   var y = -10;
@@ -100,6 +108,9 @@ function grid() {
       //RRGGBB (red-green-blue)
 
       catx.fillStyle = colorAtPosition[x + "," + y];
+      //x --> a number
+      //pawSition --> the position
+      //100, 110, 120, 130...
       catx.fillRect(x + pawSitionX, y + pawSitionY, 10, 10); //"Fills" a rectangle with a determined color
       // (0,0) --> (-10, 3)
       // (10, 10) --> (0, 13)

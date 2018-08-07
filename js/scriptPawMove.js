@@ -2,30 +2,40 @@
 
 //wobsite
 //event listener --> does things when things happen!
-document.addEventListener("mousemove", paw); //https://www.w3schools.com/jsref/obj_mouseevent.asp
-document.addEventListener("mousedown", rPaw); //push it
-document.addEventListener("mouseup", rupPaw); //relase it --> rupPaw gets called 📞 ✆
+document.addEventListener("mousemove", pawMove); //https://www.w3schools.com/jsref/obj_mouseevent.asp
+document.addEventListener("mousedown", onPawDown); //push it
+document.addEventListener("mouseup", onPawUp); //relase it --> rupPaw gets called 📞 ✆
 cat.addEventListener("contextmenu", event => event.preventDefault()); //Anti-right click
 
 var pawIsDown = false;
+var startX = 0;
+var startY = 0;
 
-// A piece of codez!
-function paw(meow) {
+function onPawDown(meow) {
+  //"mousedown"
+
+  if (meow.button == 2) {
+    pawIsDown = true;
+
+    startX = meow.pageX + pawSitionX;
+    startY = meow.pageY + pawSitionY;
+  }
+  //Here ish know X & Y --> we haz to store them =3
+}
+
+function pawMove(meow) {
+  //Whenever the user moves the mouse a teeny tiny bit
   //meow is a variable inside the function
   var ourText = meow.pageX + "," + meow.pageY;
-  //alert(ourText);
-  textBelowCanvas.innerHTML = "Coords:" + ourText;
+  textBelowCanvas.innerHTML = "Coords:" + ourText; //<--Coords text at the bottom
 
   if (pawIsDown == true) {
-    //User is dragging
+    pawSitionX = startX - meow.pageX;
+    pawSitionY = startY - meow.pageY;
   }
 }
 
-function rPaw(meow) {
-  //"mousedown"
-  pawIsDown = true;
-}
-function rupPaw(meow) {
+function onPawUp(meow) {
   //"mouseup"
   pawIsDown = false;
 }
