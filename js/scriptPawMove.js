@@ -17,8 +17,8 @@ function onPawDown(meow) {
   if (meow.button == 2) {
     pawIsDown = true;
 
-    startX = meow.pageX + pawSitionX;
-    startY = meow.pageY + pawSitionY;
+    startX = meow.pageX - pawSitionX;
+    startY = meow.pageY - pawSitionY;
   }
   //Here ish know X & Y --> we haz to store them =3
 }
@@ -30,8 +30,8 @@ function pawMove(meow) {
   textBelowCanvas.innerHTML = "Coords:" + ourText; //<--Coords text at the bottom
 
   if (pawIsDown == true) {
-    pawSitionX = startX - meow.pageX;
-    pawSitionY = startY - meow.pageY;
+    pawSitionY = meow.pageY - startY;
+    pawSitionX = meow.pageX - startX;
   }
 }
 

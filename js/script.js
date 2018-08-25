@@ -6,14 +6,14 @@
 var cat = document.createElement("canvas"); //
 cat = document.getElementById("cat-vas");
 
-newtButt.addEventListener("click", pawsitionToColor);
+newtButt.addEventListener("click", generateRandomMap);
 window.addEventListener("load", size);
 
 function size() {
   cat.width = cat.clientWidth;
   cat.height = cat.clientHeight;
 
-  pawsitionToColor();
+  generateRandomMap();
 }
 
 // Cat that draws stuff:
@@ -38,9 +38,27 @@ catx.strokeStyle = "#000000";
 //if <---Not a loop! A loop is something that is repeating OwO
 //while
 //for
-var colorAtPosition = {};
+var colorMap = {};
+/*
 
-function pawsitionToColor() {
+
+var theTextWeAreGoingToSave = "";
+
+
+var totallyNormalArray = Object.keys(colorMap);
+"3x5", "1x8", "..."
+colorMap[that value]
+
+var i = 0;
+while (i < array.length) {
+  theTextWeAreGoingToSave = theTextWeAreGoingToSave + array[i];
+  i = i + 1;
+}
+
+*/
+
+function generateRandomMap() {
+  /* Makes a new map */
   var isOKAI = confirm("Do you want a new cat?");
   if (isOKAI == true) {
     var x = -10;
@@ -77,7 +95,8 @@ function pawsitionToColor() {
         var bluePart1 = Math.floor(Math.random() * 16);
         var bluePart2 = Math.floor(Math.random() * 16);
 
-        colorAtPosition[x + "," + y] =
+        var pawsition = x + "," + y;
+        colorMap[pawsition] =
           "#" +
           color[redPart1] +
           color[redPart2] +
@@ -86,12 +105,14 @@ function pawsitionToColor() {
           color[bluePart1] +
           color[bluePart2];
       }
+
+      //Reset y
       y = -10;
     }
   }
 } //Funciton ends here (I cat spell)
 
-colorAtPosition["0,0"] = "#000000";
+colorMap["0,0"] = "#000000";
 
 var pawSitionX = 0;
 var pawSitionY = 0;
@@ -107,7 +128,13 @@ function grid() {
 
       //RRGGBB (red-green-blue)
 
-      catx.fillStyle = colorAtPosition[x + "," + y];
+      var pawsition = x + "," + y;
+      var color = colorMap[pawsition];
+      catx.fillStyle = color;
+
+      //Same codez, but in one line
+      //catx.fillStyle = colorMap[x + "," + y];
+
       //x --> a number
       //pawSition --> the position
       //100, 110, 120, 130...
